@@ -1,0 +1,59 @@
+<div class="container-fluid">
+<div class="row">
+  <div class="col-md-4">
+
+  </div>
+  <div class="col-md-4">
+    <mat-card>
+      <mat-card-content>
+        <div class="alert alert-danger" *ngIf="error">
+          <p>{{ error }}</p>
+        </div>
+        <!-- <div *ngIf="isLoading">
+          <loader></loader>
+        </div> -->
+        <!-- <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading" ></form> -->
+        <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" >
+          <br><br>
+          <mat-form-field appearance="outline">
+            <mat-label>Enter you email</mat-label>
+            <input type="email" id="email" class="form-control" ngModel name="email" required email matInput/>
+          </mat-form-field><br><br>
+          <mat-form-field appearance="outline">
+            <mat-label>Enter you Password</mat-label>
+            <input type="password" id="password" class="form-control" ngModel name="password" required minlength="6" matInput/>
+          </mat-form-field>
+          <div>
+            <button
+              class="btn btn-primary"
+              type="submit"
+              mat-button
+              [disabled]="!authForm.valid"
+            >
+              {{ isLoginMode ? 'Login' : 'Sign Up' }}
+            </button>
+            |
+            <button mat-button class="btn btn-primary" (click)="onSwitchMode()" type="button">
+              Switch to {{ isLoginMode ? 'Sign Up' : 'Login' }}
+            </button>
+          </div>
+        </form>
+        <!-- <button (click)="login()">Login with Google</button>
+        <button (click)="logineddd()">Login verify</button> -->
+
+              <!-- Calling GoogleAuth Api from AuthService -->
+              <!-- <div class="formGroup">
+                <button type="button" class="btn googleBtn" (click)="GoogleAuth()">
+                  <i class="fab fa-google-plus-g"></i>
+                  Log in with Google
+                </button>
+              </div> -->
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+  <div class="col-md-4">
+
+  </div>
+</div>
+</div>
